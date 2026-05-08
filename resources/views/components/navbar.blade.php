@@ -29,6 +29,9 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Ciao, {{ auth()->user()->name }}</a>
             <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="{{ route('user.profile') }}">Il mio profilo</a>
+              </li>
               <li><a href="{{ route('logout') }}"
                   onclick="event.preventDefault(); document.getElementById('form-logout').submit();"
                   class="dropdown-item">Logout</a>

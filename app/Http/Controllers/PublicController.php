@@ -66,4 +66,9 @@ class PublicController extends Controller
 
     }
 
+    public function profile() 
+    {
+        return view('profile');
+    }
+
 }

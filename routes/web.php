@@ -37,3 +37,6 @@ Route::put('servizio/update/{servizio}', [ServiziController::class,'update'])->n
 
 //cancellare servizio 
 Route::delete('servizio/delete/{servizio}', [ServiziController::class,'destroy'])->name('servizio.delete')->middleware('auth');
+
+//profilo utente
+Route::get('/user/profile', [PublicController::class, 'profile'])->name('user.profile')->middleware('auth');
