@@ -17,12 +17,18 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('contacts') }}">Contatta un GYMBRO</a>
         </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="{{ route('services') }}">Tutti i nostri servizi</a>
         </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ route('tags.index') }}">Tutte le categorie</a>
+        </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="{{ route('services-create') }}">Crea un nuovo servizio</a>
         </li>
+      
 
         <li class="nav-item dropdown">
           @auth
@@ -31,6 +37,9 @@
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item" href="{{ route('user.profile') }}">Il mio profilo</a>
+              </li>
+               <li>
+                <a class="dropdown-item" href="{{ route('tags.create') }}">Crea un nuovo tag</a>
               </li>
               <li><a href="{{ route('logout') }}"
                   onclick="event.preventDefault(); document.getElementById('form-logout').submit();"

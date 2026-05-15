@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
+use App\Models\Tag;
 use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,9 @@ class ServiziController extends Controller
 
 
 public function create() {
-   return view('servizi.create');
+    $tags = Tag::all();
+    
+   return view('servizi.create', compact('tags'));
 }
 
     public function store(ServiceRequest $request) {
@@ -31,6 +34,8 @@ public function create() {
         $servizio->img = $request->file('img')->store('images', 'public');
         $servizio->user_id = Auth::user()->id;
        $servizio->save();
+
+       $servizio->tags()->attach($request->tags);
 
        return redirect()->route('home')->with('successMessage','Servizio creato con successo!');
     }

@@ -12,6 +12,11 @@
         <p class="card-text">{{ $servizio->description }}</p>
         <p class="card-text">Operatore del corso: {{ $servizio->user->name }}</p>
         <p class="card-text">Prezzo: ${{ number_format($servizio->price, 2) }}</p>
+        @forelse ($servizio->tags as $tag)
+            <a class="badge bg-secondary m-1" href="{{ route('tags.index', compact('tag')) }}">{{ $tag->name }}</a>
+        @empty
+            <p class="card-text">Nessun tag assegnato</p>
+        @endforelse
         <a href="{{ route('servizio.show', parameters: compact('servizio')) }}" class="btn btn-primary mt-auto">Vai al servizio</a>
         @auth
             @if ($servizio->user_id == Auth::id())

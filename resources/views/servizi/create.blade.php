@@ -43,6 +43,15 @@
             <input type="file" name="img" class="form-control" id="img" aria-describedby="emailHelp">
           </div>
 
+          <div class="mb-3">
+          
+              @foreach ($tags as $tag)
+                <input type="checkbox" id="{{'tagsCheck' . $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+                <label for="{{'tagsCheck' . $tag->id }}">{{ $tag->name }}</label>
+              @endforeach
+              <p>Vuoi creare un nuovo tag? <a href="{{ route('tags.create') }}">Clicca qui</a></p>
+            </select>
+          </div>
 
           <button type="submit" class="btn btn-primary">Inserisci il tuo servizio</button>
         </form>

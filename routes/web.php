@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServiziController;
+use App\Http\Controllers\TagController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 
@@ -40,3 +41,10 @@ Route::delete('servizio/delete/{servizio}', [ServiziController::class,'destroy']
 
 //profilo utente
 Route::get('/user/profile', [PublicController::class, 'profile'])->name('user.profile')->middleware('auth');
+
+//creazione tag 
+Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create')->middleware('auth');
+Route::post('/tags/create/submit', [TagController::class,'submit'])->name('tags.submit')->middleware('auth'); 
+//visualizzazione tag
+Route::get('/tags/index', [TagController::class, 'index'])->name('tags.index');
+Route::get('/tags/show/{name}', [TagController::class, 'show'])->name('tags.show');
